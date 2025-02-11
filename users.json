@@ -8,5 +8,10 @@
     "id": "2",
     "username": "Testing 2",
     "createdAt": "2025-02-11T16:36:12.461Z"
+  },
+  {
+    "id": "3",
+    "username": "TestUser",
+    "createdAt": "2025-02-11T17:01:07.653Z"
   }
 ]
