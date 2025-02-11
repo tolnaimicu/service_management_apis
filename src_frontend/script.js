@@ -1,6 +1,6 @@
 const API_URL = "http://localhost:3000/api/users";
 
-// 📌 CREATE User (POST)
+
 function createUser() {
     const usernameInput = document.getElementById("username");
     const username = usernameInput.value;
@@ -13,12 +13,12 @@ function createUser() {
     .then(response => response.json())
     .then(data => {
         alert("User Created: " + JSON.stringify(data));
-        usernameInput.value = ""; // ✅ Clears the input field after success
+        usernameInput.value = ""; 
     })
     .catch(error => console.error("Error:", error));
 }
 
-// 📌 GET Users (GET)
+
 function getUsers() {
     fetch(API_URL)
     .then(response => response.json())
@@ -53,8 +53,8 @@ function updateUser() {
     .then(response => response.json())
     .then(data => {
         alert("User Updated: " + JSON.stringify(data));
-        idInput.value = ""; // ✅ Clears ID field
-        usernameInput.value = ""; // ✅ Clears username field
+        idInput.value = ""; 
+        usernameInput.value = ""; 
     })
     .catch(error => console.error("Error:", error));
 }
@@ -67,7 +67,7 @@ function deleteUser() {
     .then(response => response.json())
     .then(data => {
         alert("User Deleted: " + JSON.stringify(data));
-        idInput.value = ""; // ✅ Clears ID field
+        idInput.value = ""; 
     })
     .catch(error => console.error("Error:", error));
 }
