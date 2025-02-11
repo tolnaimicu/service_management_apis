@@ -12,7 +12,7 @@ export const createUser = (req: Request, res: Response): void => {
     }
 
     const users = readUsersFromFile();
-    const newId = users.length > 0 ? ((users[users.length - 1].id) + 1).toString() : '1';
+    const newId = users.length > 0 ? (parseInt(users[users.length - 1].id) + 1).toString() : '1';
 
     const newUser: User = {
         id: newId,
