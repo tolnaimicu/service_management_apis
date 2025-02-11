@@ -2,7 +2,9 @@ import { Request, Response } from 'express';
 import { User } from '../models/userModel';
 import { readUsersFromFile, writeUsersToFile } from '../utils/fileHandler';
 
-// POST /users - Add a new user
+
+
+
 export const createUser = (req: Request, res: Response): void => {
     const { username } = req.body;
 
@@ -26,8 +28,55 @@ export const createUser = (req: Request, res: Response): void => {
     res.status(201).json({ message: 'User created successfully', user: newUser });
 };
 
-// GET /users - Retrieve all users
+
+
+
 export const getUsers = (req: Request, res: Response) => {
     const users = readUsersFromFile();
     res.status(200).json(users);
 };
+
+
+
+
+export const deleteUser = (req: Request, res: Response): void => {
+    const { id } = req.params;
+
+    let users = readUsersFromFile();
+    const userIndex = users.findIndex(user => user.id === id);
+
+    if (userIndex === -1) {
+        res.status(404).json({ error: "User not found" });
+        return; 
+    }
+
+    users.splice(userIndex, 1); 
+    writeUsersToFile(users);
+
+     res.status(200).json({ message: "User deleted successfully" });
+};
+
+
+
+
+export const updateUser = (req: Request, res: Response): void => {
+    const { id } = req.params;
+    const { username } = req.body;
+
+    if (!username || typeof username !== 'string') {
+         res.status(400).json({ error: "Username is required and must be a string" });
+    }
+
+    let users = readUsersFromFile();
+    const userIndex = users.findIndex(user => user.id === id);
+
+    if (userIndex === -1) {
+         res.status(404).json({ error: "User not found" });
+    }
+
+    users[userIndex].username = username;
+    writeUsersToFile(users);
+
+     res.status(200).json({ message: "User updated successfully", user: users[userIndex] });
+};
+

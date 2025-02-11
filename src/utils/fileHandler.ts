@@ -6,7 +6,7 @@ import { User } from '../models/userModel';
 const filePath = path.join(__dirname, '../../users.json');
 
 
-// Read users.json or return an empty array if the file doesn’t exist
+
 export const readUsersFromFile = (): User[] => {
 
     try{
@@ -21,7 +21,8 @@ export const readUsersFromFile = (): User[] => {
     }
 };
 
-// Write data to users.json
+
+
 export const writeUsersToFile = (users: User[]): void => {
     try {
         fs.writeFileSync(filePath, JSON.stringify(users, null, 2), 'utf-8');

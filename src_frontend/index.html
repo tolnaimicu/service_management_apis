@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>User API Demo</h1>
+
+    <h2>Create User</h2>
+    <input type="text" id="username" placeholder="Enter username">
+    <button onclick="createUser()">Create User</button>
+
+    <h2>Get Users</h2>
+    <button onclick="getUsers()">Fetch Users</button>
+    <ul id="user-list"></ul>
+
+    <h2>Update User</h2>
+    <input type="text" id="update-id" placeholder="User ID">
+    <input type="text" id="update-username" placeholder="New Username">
+    <button onclick="updateUser()">Update User</button>
+
+    <h2>Delete User</h2>
+    <input type="text" id="delete-id" placeholder="User ID">
+    <button onclick="deleteUser()">Delete User</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
