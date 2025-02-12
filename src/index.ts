@@ -1,10 +1,8 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes';
 import path from 'path';
 
-// Load environment variables
-dotenv.config();
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
