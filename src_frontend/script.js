@@ -13,7 +13,8 @@ function createUser() {
     .then(response => response.json())
     .then(data => {
         alert("User Created: " + JSON.stringify(data));
-        usernameInput.value = ""; 
+        usernameInput.value = "";
+        getUsers();
     })
     .catch(error => console.error("Error:", error));
 }
@@ -55,6 +56,7 @@ function updateUser() {
         alert("User Updated: " + JSON.stringify(data));
         idInput.value = ""; 
         usernameInput.value = ""; 
+        getUsers();
     })
     .catch(error => console.error("Error:", error));
 }
@@ -68,6 +70,7 @@ function deleteUser() {
     .then(data => {
         alert("User Deleted: " + JSON.stringify(data));
         idInput.value = ""; 
+        getUsers();
     })
     .catch(error => console.error("Error:", error));
 }

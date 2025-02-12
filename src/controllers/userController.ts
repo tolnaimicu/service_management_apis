@@ -9,7 +9,7 @@ export const createUser = (req: Request, res: Response): void => {
     const { username } = req.body;
 
     if (!username || typeof username !== 'string') {
-        res.status(400).json({ error: 'Username is required and must be a string' });
+        res.status(400).json({ error: 'Username is required and must be entered in a string format' });
         return;
     }
 
@@ -46,7 +46,7 @@ export const deleteUser = (req: Request, res: Response): void => {
     const userIndex = users.findIndex(user => user.id === id);
 
     if (userIndex === -1) {
-        res.status(404).json({ error: "User not found" });
+        res.status(404).json({ error: "No user by this ID" });
         return; 
     }
 
@@ -64,14 +64,14 @@ export const updateUser = (req: Request, res: Response): void => {
     const { username } = req.body;
 
     if (!username || typeof username !== 'string') {
-         res.status(400).json({ error: "Username is required and must be a string" });
+         res.status(400).json({ error: "Username is required and must be entered in a string format" });
     }
 
     let users = readUsersFromFile();
     const userIndex = users.findIndex(user => user.id === id);
 
     if (userIndex === -1) {
-         res.status(404).json({ error: "User not found" });
+         res.status(404).json({ error: "No user by this ID" });
     }
 
     users[userIndex].username = username;
