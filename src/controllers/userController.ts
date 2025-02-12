@@ -80,3 +80,19 @@ export const updateUser = (req: Request, res: Response): void => {
      res.status(200).json({ message: "User updated successfully", user: users[userIndex] });
 };
 
+
+export const getUserById = (req: Request, res: Response): void => {
+    const { id } = req.params; 
+    const users = readUsersFromFile(); 
+
+    const user = users.find(user => user.id === id); 
+
+    if (!user) {
+         res.status(404).json({ error: "User not found" });
+         return;
+    }
+
+     res.status(200).json(user);
+};
+
+

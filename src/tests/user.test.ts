@@ -52,7 +52,17 @@ describe('User API', () => {
         const response = await request(app).delete(`/api/users/9999`);
 
         expect(response.status).toBe(404);
-        expect(response.body.error).toBe("User not found");
+        expect(response.body.error).toBe("No user by this ID");
     });
+
+
+    it("should return a user by ID", async () => {
+        
+        const response = await request(app).get(`/api/users/${userId}`);
+    
+        expect(response.status).toBe(200);
+        expect(response.body.username).toBe("UpdatedUsername");
+    });
+    
     
 });

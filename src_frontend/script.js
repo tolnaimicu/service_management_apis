@@ -75,3 +75,20 @@ function deleteUser() {
     .catch(error => console.error("Error:", error));
 }
 
+
+
+function searchUserById() {
+    const id = document.getElementById("search-id").value;
+    
+    fetch(`http://localhost:3000/api/users/${id}`)
+        .then(response => response.json())
+        .then(user => {
+            if (user.error) {
+                document.getElementById("search-result").textContent = "User not found";
+            } else {
+                document.getElementById("search-result").textContent = `ID: ${user.id}, Username: ${user.username}`;
+            }
+        })
+        .catch(error => console.error("Error:", error));
+}
+

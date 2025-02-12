@@ -7,24 +7,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>User API Demo</h1>
+    <h1>User Management</h1>
 
     <h2>Create User</h2>
     <input type="text" id="username" placeholder="Enter username">
     <button onclick="createUser()">Create User</button>
 
     <h2>Get Users</h2>
-    <button onclick="getUsers()">Fetch Users</button>
+    <button onclick="getUsers()">Get All Users</button>
     <ul id="user-list"></ul>
 
     <h2>Update User</h2>
     <input type="text" id="update-id" placeholder="User ID">
     <input type="text" id="update-username" placeholder="New Username">
-    <button onclick="updateUser()">Update User</button>
+    <button onclick="updateUser()">Update</button>
 
     <h2>Delete User</h2>
     <input type="text" id="delete-id" placeholder="User ID">
-    <button onclick="deleteUser()">Delete User</button>
+    <button onclick="deleteUser()">Delete</button>
+
+    <h2>Search User by ID</h2>
+    <input type="text" id="search-id" placeholder="Enter User ID">
+    <button onclick="searchUserById()">Search</button>
+    <p id="search-result"></p>
 
     <script src="script.js"></script>
 </body>
