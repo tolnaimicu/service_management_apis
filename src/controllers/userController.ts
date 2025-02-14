@@ -25,7 +25,7 @@ export const createUser = (req: Request, res: Response): void => {
     users.push(newUser);
     writeUsersToFile(users);
 
-    res.status(201).json({ message: 'User created successfully', user: newUser });
+    res.status(201).json({ message: 'User added to storage', user: newUser });
 };
 
 

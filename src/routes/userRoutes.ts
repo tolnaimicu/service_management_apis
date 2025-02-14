@@ -4,12 +4,13 @@ import { createUser, deleteUser, getUserById, getUsers, updateUser } from '../co
 const router: Router = express.Router();
 
 router.post('/users', createUser); 
+
 router.get('/users', getUsers);
 
-//EXTRA
-
 router.delete('/users/:id', deleteUser);
+
 router.put('/users/:id', updateUser);
+
 router.get("/users/:id", getUserById);
 
 

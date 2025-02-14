@@ -12,9 +12,14 @@ function createUser() {
     })
     .then(response => response.json())
     .then(data => {
+        if(data.error){
+            alert("Error: " + JSON.stringify(data))
+        }
+        else{
         alert("User Created: " + JSON.stringify(data));
         usernameInput.value = "";
         getUsers();
+        }
     })
     .catch(error => console.error("Error:", error));
 }
@@ -37,13 +42,10 @@ function getUsers() {
 
 function updateUser() {
     const idInput = document.getElementById("update-id");
-
     const id = idInput.value;
 
     const usernameInput = document.getElementById("update-username");
     const username = usernameInput.value;
-
-    console.log("XXXXXXXXXXX:   ", username);
 
 
     fetch(`http://localhost:3000/api/users/${id}`, {
@@ -53,10 +55,15 @@ function updateUser() {
     })
     .then(response => response.json())
     .then(data => {
+        if(data.error){
+            alert("Error: " + JSON.stringify(data))
+        }
+        else{
         alert("User Updated: " + JSON.stringify(data));
         idInput.value = ""; 
         usernameInput.value = ""; 
         getUsers();
+        }
     })
     .catch(error => console.error("Error:", error));
 }
@@ -65,12 +72,18 @@ function deleteUser() {
     const idInput = document.getElementById("delete-id");
     const id = idInput.value;
 
-    fetch(`http://localhost:3000/api/users/${id}`, { method: "DELETE" })
+    fetch(`http://localhost:3000/api/users/${id}`, 
+     { method: "DELETE" })
     .then(response => response.json())
     .then(data => {
+        if(data.error){
+            alert("Error: " + JSON.stringify(data))
+        }
+        else{
         alert("User Deleted: " + JSON.stringify(data));
         idInput.value = ""; 
         getUsers();
+        }
     })
     .catch(error => console.error("Error:", error));
 }

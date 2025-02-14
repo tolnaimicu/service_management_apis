@@ -24,8 +24,6 @@ describe('User API', () => {
         expect(response.body.user.username).toBe("TestUser");
 
         userId = response.body.user.id;
-        console.log("XXXXXXXXXXXXXXXXXXX:   ", userId);
-
     });
 
     
@@ -48,7 +46,7 @@ describe('User API', () => {
     });  
 
 
-    it("should return 404 when deleting a non-existing user", async () => {
+    it("should return 400 when deleting a non existing user", async () => {
         const response = await request(app).delete(`/api/users/9999`);
 
         expect(response.status).toBe(404);
