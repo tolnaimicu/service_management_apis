@@ -16,7 +16,7 @@ function createUser() {
             alert("Error: " + JSON.stringify(data))
         }
         else{
-        alert("User Created: " + JSON.stringify(data));
+        alert("Success: " + JSON.stringify(data));
         usernameInput.value = "";
         getUsers();
         }
@@ -29,16 +29,13 @@ function getUsers() {
     fetch(API_URL)
     .then(response => response.json())
     .then(users => {
-        const userList = document.getElementById("user-list");
-        userList.innerHTML = "";
-        users.forEach(user => {
-            let li = document.createElement("li");
-            li.textContent = `ID: ${user.id}, Name: ${user.username}`;
-            userList.appendChild(li);
-        });
+        document.getElementById("user-list").innerHTML = users
+            .map(user => `<li>ID: ${user.id}, Name: ${user.username}</li>`)
+            .join("");
     })
     .catch(error => console.error("Error:", error));
 }
+
 
 function updateUser() {
     const idInput = document.getElementById("update-id");
@@ -59,7 +56,7 @@ function updateUser() {
             alert("Error: " + JSON.stringify(data))
         }
         else{
-        alert("User Updated: " + JSON.stringify(data));
+        alert("Success: " + JSON.stringify(data));
         idInput.value = ""; 
         usernameInput.value = ""; 
         getUsers();
@@ -80,7 +77,7 @@ function deleteUser() {
             alert("Error: " + JSON.stringify(data))
         }
         else{
-        alert("User Deleted: " + JSON.stringify(data));
+        alert("Success: " + JSON.stringify(data));
         idInput.value = ""; 
         getUsers();
         }
