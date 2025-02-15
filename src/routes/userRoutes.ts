@@ -3,6 +3,8 @@ import { createUser, deleteUser, getUserById, getUsers, updateUser } from '../co
 
 const router: Router = express.Router();
 
+
+
 router.post('/users', createUser); 
 
 router.get('/users', getUsers);

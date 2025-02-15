@@ -10,7 +10,6 @@ export const createUser = (req: Request, res: Response): void => {
 
     if (!username || typeof username !== 'string') {
         res.status(400).json({ error: 'Username is required and must be entered in a string format' });
-        return;
     }
 
     const users = readUsersFromFile();
@@ -47,7 +46,6 @@ export const deleteUser = (req: Request, res: Response): void => {
 
     if (userIndex === -1) {
         res.status(404).json({ error: "No user by this ID" });
-        return; 
     }
 
     users.splice(userIndex, 1); 

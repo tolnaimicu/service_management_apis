@@ -88,7 +88,8 @@ function deleteUser() {
 
 
 function searchUserById() {
-    const id = document.getElementById("search-id").value;
+    const idInput = document.getElementById("search-id");
+    const id = idInput.value;
     
     fetch(`http://localhost:3000/api/users/${id}`)
         .then(response => response.json())
@@ -97,6 +98,7 @@ function searchUserById() {
                 document.getElementById("search-result").textContent = "User not found";
             } else {
                 document.getElementById("search-result").textContent = `ID: ${user.id}, Username: ${user.username}`;
+                idInput.value = "";
             }
         })
         .catch(error => console.error("Error:", error));

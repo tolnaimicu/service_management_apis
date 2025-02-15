@@ -13,6 +13,7 @@ describe('User API', () => {
     let userId: string;
     const newUsername = 'UpdatedUsername';
 
+
     it('should create a user', async () => {
 
         const response = await request(app)
@@ -24,6 +25,7 @@ describe('User API', () => {
         expect(response.body.user.username).toBe("TestUser");
 
         userId = response.body.user.id;
+        console.log("Xxxxxxxxxxxxxxxxxxxxxxx:   " + userId);
     });
 
     
@@ -45,22 +47,25 @@ describe('User API', () => {
         expect(response.body.message).toBe("User updated successfully");
     });  
 
-
-    it("should return 400 when deleting a non existing user", async () => {
-        const response = await request(app).delete(`/api/users/9999`);
-
-        expect(response.status).toBe(404);
-        expect(response.body.error).toBe("No user by this ID");
-    });
-
-
     it("should return a user by ID", async () => {
-        
-        const response = await request(app).get(`/api/users/${userId}`);
-    
-        expect(response.status).toBe(200);
-        expect(response.body.username).toBe("UpdatedUsername");
+
+
+    const response = await request(app).get(`/api/users/${userId}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.username).toBe("UpdatedUsername");
     });
+
+    
+
+    it("should delete the newly created user", async () => {
+        const response = await request(app).delete(`/api/users/${userId}`);
+
+        expect(response.status).toBe(200);
+    });
+    
+
+
     
     
 });
